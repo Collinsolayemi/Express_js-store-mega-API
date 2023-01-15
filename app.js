@@ -1,8 +1,12 @@
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 const dotenv = require("dotenv").config("./.env");
 const connectDB = require("./db/connect");
+const notFoundMiddleware = require("./middleware/not-found");
+const errorMiddleware = require("./middleware/error-handler");
+
+//middleware
+app.use(express.json());
 
 const port = process.env.PORT || 2000;
 
@@ -16,5 +20,5 @@ const start = async () => {
     console.log(err);
   }
 };
-console.log("datas");
+
 start();
