@@ -1,6 +1,6 @@
 const express = require("express");
-require("express-async-errors");
 const app = express();
+require("express-async-errors");
 const dotenv = require("dotenv").config("./.env");
 const connectDB = require("./db/connect");
 const notFoundMiddleware = require("./middleware/not-found");
@@ -9,14 +9,10 @@ const productRoute = require("./routes/products-route");
 
 //middleware
 app.use(express.json());
-app.use(notFoundMiddleware);
-app.use(errorMiddleware);
+// app.use(notFoundMiddleware);
+// app.use(errorMiddleware);
 app.use("/api/v1/products", productRoute);
 
-//routes
-app.get("/", (req, res) => {
-  res.send("<h1>store APi</h1>");
-});
 const port = process.env.PORT || 2000;
 
 const start = async () => {

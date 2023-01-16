@@ -1,3 +1,4 @@
+const Product = require("../models/product-schema");
 const express = require("express");
 
 const getAllProductStatic = async (req, res) => {
@@ -6,7 +7,8 @@ const getAllProductStatic = async (req, res) => {
 };
 
 const getAllProduct = async (req, res) => {
-  res.status(200).json({ msg: "product routes" });
+  const prod = await Product.find();
+  res.status(200).json({ msg: prod });
 };
 
 module.exports = {
