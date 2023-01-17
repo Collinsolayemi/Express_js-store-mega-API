@@ -2,7 +2,9 @@ const Product = require("../models/product-schema");
 const express = require("express");
 
 const getAllProductStatic = async (req, res) => {
-  const products = await Product.find({});
+  const search = "a";
+  const products = await Product.find({ name: { $regex: "i" } });
+
   res.status(200).json({ msg: "product testing routes" });
 };
 

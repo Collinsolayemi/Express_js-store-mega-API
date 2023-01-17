@@ -28,5 +28,3 @@ const start = async () => {
 };
 
 start();
-
-//4 hrs 16 min
