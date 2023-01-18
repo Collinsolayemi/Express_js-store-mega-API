@@ -4,7 +4,7 @@ const connectDb = require("./db/connect");
 const Product = require("./models/product-schema");
 const jsonProducts = require("./products.json");
 
-// a function to import the data to database
+// a function to import the json data to database
 const start = async () => {
   try {
     await connectDb(process.env.DATABASE_URL);
