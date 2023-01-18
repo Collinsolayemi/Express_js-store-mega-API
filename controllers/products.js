@@ -3,7 +3,7 @@ const express = require("express");
 
 const getAllProductStatic = async (req, res) => {
   const search = "a";
-  const products = await Product.find({}).sort("name");
+  const products = await Product.find({}).sort("name price rating");
 
   res.status(200).json({ msg: products });
 };
@@ -19,7 +19,7 @@ const getAllProduct = async (req, res) => {
     queryObject.company = company;
   }
   if (name) {
-    queryObject.name = name;
+    queryObject.name = { $regex: name, $options: "i" };
   }
 
   const products = await Product.find(req.query);
