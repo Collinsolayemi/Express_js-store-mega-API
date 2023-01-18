@@ -3,9 +3,9 @@ const express = require("express");
 
 const getAllProductStatic = async (req, res) => {
   const search = "a";
-  const products = await Product.find({ name: { $regex: "i" } });
+  const products = await Product.find({}).sort("name");
 
-  res.status(200).json({ msg: "product testing routes" });
+  res.status(200).json({ msg: products });
 };
 
 const getAllProduct = async (req, res) => {

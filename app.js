@@ -1,16 +1,16 @@
+const express = require("express");
+const app = express();
 require("express-async-errors");
 require("dotenv").config("./.env");
 
-const express = require("express");
-const app = express();
 const connectDB = require("./db/connect");
 const notFoundMiddleware = require("./middleware/not-found");
 const errorMiddleware = require("./middleware/error-handler");
 const productRoute = require("./routes/products-route");
 
-//middleware
+// //middleware
 app.use(express.json());
-app.use(notFoundMiddleware);
+// app.use(notFoundMiddleware);
 app.use(errorMiddleware);
 app.use("/api/v1/products", productRoute);
 
