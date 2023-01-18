@@ -22,8 +22,12 @@ const getAllProduct = async (req, res) => {
     queryObject.name = { $regex: name, $options: "i" };
   }
 
-  const products = await Product.find(req.query);
-  res.status(200).json({ msg: products });
+  let result = Product.find(queryObject);
+  if (sort) {
+    products = products.find();
+  }
+  const products = await result;
+  res.status(200).json({ products, nbHits: products.length });
 };
 
 module.exports = {
